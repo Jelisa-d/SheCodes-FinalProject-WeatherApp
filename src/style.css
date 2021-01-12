@@ -1,7 +1,7 @@
 body {
-  margin: 20px auto;
-  font-family: "Open Sans", sans-serif;
   color: #3e3e3f;
+  font-family: "Open Sans", sans-serif;
+  margin: 20px auto;
 }
 
 h1,
@@ -30,11 +30,11 @@ footer {
 }
 
 .container {
-  max-width: 400px;
   background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-  border-radius: 15px;
-  padding: 25px 20px;
   border: 2px solid #0505af;
+  border-radius: 15px;
+  max-width: 400px;
+  padding: 25px 20px;
 }
 
 .col-8 {
@@ -46,10 +46,10 @@ footer {
 }
 
 .current-degrees {
-  text-align: right;
   margin-top: 25px;
   margin-right: 76px;
   margin-bottom: 0;
+  text-align: right;
 }
 
 .current-weather-image {
@@ -59,29 +59,31 @@ footer {
 
 .date-time,
 .current-day-details {
-  text-align: center;
   font-size: 14px;
   line-height: normal;
   padding-bottom: 30px;
+  text-align: center;
 }
 
 .celsius-temp {
   font-size: 14px;
+  float: right;
+  margin-top: 5px;
 }
 
 .next-days-icon {
-  size: 20px;
   display: block;
-  margin: 0 auto;
-  width: 70%;
   height: auto;
+  margin: 0 auto;
   padding-bottom: 5px;
+  size: 20px;
+  width: 70%;
 }
 
 .next-days {
-  text-align: center;
-  padding-bottom: 25px;
   font-size: 14px;
+  padding-bottom: 25px;
+  text-align: center;
 }
 
 .max-temperature {
