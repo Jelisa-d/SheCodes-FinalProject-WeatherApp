@@ -40,6 +40,7 @@ function getApi(event) {
 };
 
 function showWeather(response) {
+  console.log(response.data);
   let city = document.querySelector("h3");
   let citySearch = response.data.name;
   city.innerHTML = citySearch;
@@ -63,6 +64,9 @@ function showWeather(response) {
   let humidity = document.querySelector("#humidity");
   let humidityOutput = response.data.main.humidity;
   humidity.innerHTML = humidityOutput;
+
+  let icon = document.querySelector("#icon");
+  icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 };
 
 let cityInput = document.querySelector("#enter-a-city-form");
