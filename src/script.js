@@ -26,13 +26,12 @@ currentDate.innerHTML = showCurrentDate(now);
 
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = showCurrentTime(now);
-//
-//
+
+
 function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=926d7c030f98479669418fa4cb14101f&units=metric`;
   axios.get(apiUrl).then(showWeather);
 }
-
 
 function getApi(event) {
   event.preventDefault();
@@ -51,7 +50,7 @@ function showWeather(response) {
 
   let description = document.querySelector("#weather-description")
   let descriptionWeather = response.data.weather[0].description;
-  description.innerHTML = descriptionWeather[0].toUpperCase() + descriptionWeather.slice(1);
+  description.innerHTML = descriptionWeather;
 
   let max = document.querySelector("#max-temperature");
   let maxTemp = response.data.main.temp_max;

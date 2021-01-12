@@ -52,6 +52,16 @@ footer {
   text-align: right;
 }
 
+.celsius-temp {
+  font-size: 14px;
+  float: right;
+  margin-top: 5px;
+}
+
+.current-degrees .celsius-temp {
+  position: relative;
+}
+
 .current-weather-image {
   display: block;
   margin: 0 auto;
@@ -63,12 +73,7 @@ footer {
   line-height: normal;
   padding-bottom: 30px;
   text-align: center;
-}
-
-.celsius-temp {
-  font-size: 14px;
-  float: right;
-  margin-top: 5px;
+  text-transform: capitalize;
 }
 
 .next-days-icon {
