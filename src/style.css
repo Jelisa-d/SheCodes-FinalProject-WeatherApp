@@ -52,14 +52,14 @@ footer {
   text-align: right;
 }
 
+.number-degrees {
+  font-weight: bold;
+}
+
 .celsius-temp {
   font-size: 14px;
   float: right;
   margin-top: 5px;
-}
-
-.current-degrees .celsius-temp {
-  position: relative;
 }
 
 .current-weather-image {

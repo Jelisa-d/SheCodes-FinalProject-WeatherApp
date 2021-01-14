@@ -1,5 +1,3 @@
-// date & time
-
 function showCurrentDate(date) {
   let weekDays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let allMonths = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -20,16 +18,6 @@ function showCurrentTime(date) {
   };
   return `${hour}:${minutes}`;
 };
-
-let now = new Date();
-
-let currentDate = document.querySelector("#current-date");
-currentDate.innerHTML = showCurrentDate(now);
-
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = showCurrentTime(now);
-
-// current weather for search location
 
 function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=926d7c030f98479669418fa4cb14101f&units=metric`;
@@ -106,6 +94,14 @@ function showWeather(response) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&exclude=hourly.daily&appid=926d7c030f98479669418fa4cb14101f&units=metric`;
   axios.get(apiUrl).then(showForecast);
 };
+
+let now = new Date();
+
+let currentDate = document.querySelector("#current-date");
+currentDate.innerHTML = showCurrentDate(now);
+
+let currentTime = document.querySelector("#current-time");
+currentTime.innerHTML = showCurrentTime(now);
 
 let cityInput = document.querySelector("#enter-a-city-form");
 cityInput.addEventListener("submit", getApi);
