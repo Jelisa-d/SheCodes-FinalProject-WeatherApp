@@ -35,7 +35,7 @@ function formatDay(timestamp){
   let weekDays = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = weekDays[date.getDay()];
   return `${day}`;
-}
+};
 
 function showForecast(response) {
   let weatherForecast = document.querySelector("#weather-forecast");
@@ -45,7 +45,7 @@ function showForecast(response) {
 
   for (let index = 1; index < 6; index++) {
     forecast = response.data.daily[index];
-    let forecastDay = formatDay(forecast.dt * 1000)
+    let forecastDay = formatDay(forecast.dt * 1000);
     weatherForecast.innerHTML += `
       <div class="col">
         <h5>
@@ -72,7 +72,7 @@ function showWeather(response) {
   let temperature = response.data.main.temp;
   degrees.innerHTML = Math.round(temperature);
 
-  let description = document.querySelector("#weather-description")
+  let description = document.querySelector("#weather-description");
   let descriptionWeather = response.data.weather[0].description;
   description.innerHTML = descriptionWeather;
 
@@ -106,4 +106,4 @@ currentTime.innerHTML = showCurrentTime(now);
 let cityInput = document.querySelector("#enter-a-city-form");
 cityInput.addEventListener("submit", getApi);
 
-search("Amsterdam")
+search("Amsterdam");
