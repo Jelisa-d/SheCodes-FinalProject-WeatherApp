@@ -1,3 +1,5 @@
+// date & time
+
 function showCurrentDate(date) {
   let weekDays = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   let allMonths = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -27,6 +29,7 @@ currentDate.innerHTML = showCurrentDate(now);
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = showCurrentTime(now);
 
+// current weather for search location
 
 function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=926d7c030f98479669418fa4cb14101f&units=metric`;
@@ -39,8 +42,40 @@ function getApi(event) {
   search(city);
 };
 
+function formatDay(timestamp){
+  let date = new Date (timestamp);
+  let weekDays = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = weekDays[date.getDay()];
+  return `${day}`;
+}
+
+function showForecast(response) {
+  let weatherForecast = document.querySelector("#weather-forecast");
+  weatherForecast.innerHTML = null;
+  let forecast = null;
+  
+
+  for (let index = 1; index < 6; index++) {
+    forecast = response.data.daily[index];
+    let forecastDay = formatDay(forecast.dt * 1000)
+    weatherForecast.innerHTML += `
+      <div class="col">
+        <h5>
+          ${forecastDay}
+        </h5>
+        <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" class="next-days-icon">
+        <p class="next-days">
+          <span class="max-temperature">
+            ${Math.round(forecast.temp.max)}°
+          </span>
+          ${Math.round(forecast.temp.min)}°
+        </p>
+      </div>  
+    `;
+  };
+};
+
 function showWeather(response) {
-  console.log(response.data);
   let city = document.querySelector("h3");
   let citySearch = response.data.name;
   city.innerHTML = citySearch;
@@ -67,6 +102,9 @@ function showWeather(response) {
 
   let icon = document.querySelector("#icon");
   icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&exclude=hourly.daily&appid=926d7c030f98479669418fa4cb14101f&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 };
 
 let cityInput = document.querySelector("#enter-a-city-form");
